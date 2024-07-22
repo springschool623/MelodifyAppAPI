@@ -13,7 +13,7 @@ app.use(express.json());
 // Kết nối database
 connectDB(process.env.DB_URI);
 
-// Routes
+// Route
 app.use('/api', userRouter);
 
 const PORT = 3000;
