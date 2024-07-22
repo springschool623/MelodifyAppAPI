@@ -1,4 +1,4 @@
-import User from '../model/user.js';
+import User from '../model/user_model.js';
 
 // Lấy tất cả người dùng
 export const getUsers = async (req, res) => {
