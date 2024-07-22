@@ -1,16 +1,21 @@
-import express from "express"
-import { addUser, deleteUser, getProducts, getUserById, updateUser } from "../controller/user";
+import express from "express";
+import { addUser, deleteUser, getUsers, getUserById, updateUser } from "../controller/user";
 
 const router = express.Router();
 
-router.get('/users', getProducts)
+// Lấy tất cả người dùng
+router.get('/users', getUsers);
 
-router.get('/users/:id', getUserById)
+// Lấy người dùng theo ID
+router.get('/users/:id', getUserById);
 
-router.post('/users', addUser)
+// Thêm người dùng mới
+router.post('/users', addUser);
 
-router.put('/users', updateUser)
+// Cập nhật người dùng
+router.put('/users/:id', updateUser);
 
-router.delete('/users', deleteUser)
+// Xóa người dùng
+router.delete('/users/:id', deleteUser);
 
 export default router;

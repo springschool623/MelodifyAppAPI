@@ -1,18 +1,22 @@
 import express from 'express';
-import userRouter from './routers/user'
+import userRouter from './routers/user';
 import { connectDB } from './config/db';
-import dotenv from "dotenv"
+import dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
+
 const app = express();
 
-//middleware, không cần dùng bodyparse nữa
+// Middleware để parse JSON
 app.use(express.json());
 
-//connect db
-connectDB(process.env.DB_URI)
+// Kết nối database
+connectDB(process.env.DB_URI);
 
-//routes
-app.use('/api', userRouter)
+// Routes
+app.use('/api', userRouter);
 
-export const viteNodeApp = app;
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
