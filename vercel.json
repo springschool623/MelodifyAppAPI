@@ -11,9 +11,6 @@
         "src": "/(.*)",
         "dest": "app.js"
       }
-    ],
-    "env": {
-      "DB_URI": "@db_uri"
-    }
+    ]
   }
   
