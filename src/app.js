@@ -1,5 +1,5 @@
 import express from 'express';
-import userRouter from './routers/user.js'; // Thêm đuôi .js
+import userRouter from './routers/user_router.js'; // Thêm đuôi .js
 import { connectDB } from './config/db.js'; // Thêm đuôi .js
 import dotenv from 'dotenv';
 import cors from 'cors';
