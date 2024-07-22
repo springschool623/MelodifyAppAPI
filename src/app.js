@@ -7,6 +7,10 @@ dotenv.config();
 
 const app = express();
 
+const cors = require("cors")
+
+app.use(cors())
+
 // Middleware để parse JSON
 app.use(express.json());
 
