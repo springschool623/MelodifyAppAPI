@@ -1,6 +1,6 @@
 import express from 'express';
 import userRouter from './routers/user.js'; // Thêm đuôi .js
-import { connectDB } from './config/db.js';
+import { connectDB } from './config/db.js'; // Thêm đuôi .js
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -16,12 +16,6 @@ connectDB(process.env.DB_URI);
 // Route
 app.use('/api', userRouter);
 
-const PORT = 3000;
-const server = app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-// Xuất named app
+// Xuất ứng dụng để nền tảng triển khai sẽ gọi phương thức listen
 export const viteNodeApp = app;
-
-export default server; // Xuất mặc định server
+export default app;
