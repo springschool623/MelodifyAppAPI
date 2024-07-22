@@ -1,5 +1,5 @@
 import express from "express";
-import { addUser, deleteUser, getUsers, getUserById, updateUser } from "../controller/user";
+import { addUser, deleteUser, getUsers, getUserById, updateUser } from "../controller/user.js"; // Thêm đuôi .js
 
 const router = express.Router();
 
