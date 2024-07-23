@@ -1,13 +1,24 @@
 import express from "express";
 import { getFavPlayLists, getFavPlayListById, addFavPlayList, deleteFavPlayList } from "../controller/favPlayList.js";
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
-// Middleware để xác thực người dùng (cần triển khai)
+// Middleware để xác thực người dùng
 const authenticateUser = (req, res, next) => {
-    // Giả sử xác thực thành công và gán userId
-    req.userId = "exampleUserId"; // Thay bằng logic xác thực thực tế
-    next();
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+
+    if (!token) {
+        return res.status(401).json({ message: 'No token provided' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_TOKEN); // Thay 'your_jwt_secret' bằng secret thực tế của bạn
+        req.userId = decoded.id; // Gán userId từ token đã giải mã vào request
+        next();
+    } catch (error) {
+        res.status(401).json({ message: 'Invalid token' });
+    }
 };
 
 // Lấy tất cả playlist yêu thích của người dùng
