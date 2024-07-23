@@ -1,5 +1,5 @@
 import express from "express";
-import { getFavPlayLists, getFavPlayListById, addFavPlayList, deleteFavPlayList } from "../controller/playlistController.js";
+import { getFavPlayLists, getFavPlayListById, addFavPlayList, deleteFavPlayList } from "../controller/favPlayList.js";
 
 const router = express.Router();
 
@@ -11,15 +11,15 @@ const authenticateUser = (req, res, next) => {
 };
 
 // Lấy tất cả playlist yêu thích của người dùng
-router.get('/playlists', authenticateUser, getFavPlayLists);
+router.get('/fav-playlists', authenticateUser, getFavPlayLists);
 
 // Lấy playlist yêu thích theo ID
-router.get('/playlists/:id', authenticateUser, getFavPlayListById);
+router.get('/fav-playlists/:id', authenticateUser, getFavPlayListById);
 
 // Thêm playlist yêu thích mới
-router.post('/playlists', authenticateUser, addFavPlayList);
+router.post('/fav-playlists', authenticateUser, addFavPlayList);
 
 // Xóa playlist yêu thích
-router.delete('/playlists/:id', authenticateUser, deleteFavPlayList);
+router.delete('/fav-playlists/:id', authenticateUser, deleteFavPlayList);
 
 export default router;

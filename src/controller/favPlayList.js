@@ -1,4 +1,4 @@
-import FavPlayList from '../models/favPlayList.js';
+import FavPlayList from '../model/favPlayList.js';
 
 // Lấy tất cả playlist yêu thích của người dùng
 export const getFavPlayLists = async (req, res) => {
