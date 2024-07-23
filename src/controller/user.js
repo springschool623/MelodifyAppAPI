@@ -25,16 +25,24 @@ export const getUserById = async (req, res) => {
     }
 };
 
-// Thêm người dùng mới
+// Khi thêm người dùng mới, hãy đảm bảo rằng bạn đã băm mật khẩu đúng cách
 export const addUser = async (req, res) => {
     try {
-        const newUser = new User(req.body);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+        const newUser = new User({
+            ...req.body,
+            password: hashedPassword,
+        });
+
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 // Xóa người dùng
 export const deleteUser = async (req, res) => {
