@@ -1,4 +1,6 @@
 import User from '../model/user.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 // Lấy tất cả người dùng
 export const getUsers = async (req, res) => {
@@ -55,6 +57,29 @@ export const updateUser = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
         res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// Đăng nhập người dùng
+export const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: 'Invalid password' });
+        }
+
+        const token = jwt.sign({ id: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
+
+        res.status(200).json({ token, user: { id: user._id, email: user.email } });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
