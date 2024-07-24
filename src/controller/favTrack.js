@@ -1,4 +1,4 @@
-import Track from '../models/favTrack.js'; // Adjust the import path to your actual model location
+import Track from '../model/favTrack.js'; // Adjust the import path to your actual model location
 
 // Get tracks by user email
 export const getTracksByUserEmail = async (req, res) => {
