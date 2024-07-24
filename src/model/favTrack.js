@@ -4,7 +4,6 @@ const trackSchema = new mongoose.Schema({
     userEmail: {
         type: String, 
         required: true,
-        unique: true
     },
     trackID: {
         type: String,
