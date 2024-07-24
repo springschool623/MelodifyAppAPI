@@ -9,4 +9,10 @@ router.get('/tracks/:email', getTracksByUserEmail);
 // Add a new track
 router.post('/tracks', addTrack);
 
+// Delete all tracks
+router.delete('/tracks', deleteAllTracks);
+
+// Get all tracks
+router.get('/tracks', getAllTracks);
+
 export default router;

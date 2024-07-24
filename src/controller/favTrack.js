@@ -31,3 +31,23 @@ export const addTrack = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+
+// Delete all tracks
+export const deleteAllTracks = async (req, res) => {
+    try {
+        await Track.deleteMany({});
+        res.status(200).json({ message: 'All tracks have been deleted' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// Get all tracks
+export const getAllTracks = async (req, res) => {
+    try {
+        const tracks = await Track.find({});
+        res.status(200).json(tracks);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
