@@ -17,6 +17,10 @@ const trackSchema = new mongoose.Schema({
     artists: {
         type: String,
         required: true
+    },
+    trackImage: {
+        type: String,
+        required: true
     }
 });
 

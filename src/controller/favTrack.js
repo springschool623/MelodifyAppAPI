@@ -20,7 +20,8 @@ export const addTrack = async (req, res) => {
         userEmail,
         trackID,
         trackName,
-        artists
+        artists,
+        trackImage,
     });
 
     try {
