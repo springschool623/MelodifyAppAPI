@@ -6,10 +6,8 @@ const trackSchema = new mongoose.Schema({
         required: true
     },
     userEmail: {
-        type: String, 
-        required: true,
-        unique: false,
-        index: false // Explicitly state that this field should not be indexed uniquely
+        type: String,
+        required: true
     },
     trackName: {
         type: String, 
@@ -24,5 +22,8 @@ const trackSchema = new mongoose.Schema({
         required: true
     }
 });
+
+// Ensure the schema does not re-create unique indexes
+trackSchema.index({ userEmail: 1 }, { unique: false });
 
 export default mongoose.model("Track", trackSchema);
