@@ -1,5 +1,5 @@
 import express from "express";
-import { addUser, deleteUser, getUsers, getUserById, updateUser, loginUser } from "../controller/user.js"; // Thêm đuôi .js
+import { addUser, deleteUser, getUsers, getUserById, updateUser, loginUser, deleteAllUsers } from "../controller/user.js"; // Thêm đuôi .js
 
 const router = express.Router();
 
@@ -20,5 +20,8 @@ router.delete('/users/:id', deleteUser);
 
 // Đăng nhập người dùng
 router.post('/users/login', loginUser);
+
+// Xóa toàn bộ người dùng
+router.delete('/users', deleteAllUsers); 
 
 export default router;
