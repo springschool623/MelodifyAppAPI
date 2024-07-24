@@ -9,6 +9,7 @@ const trackSchema = new mongoose.Schema({
         type: String, 
         required: true,
         unique: false,
+        index: false // Explicitly state that this field should not be indexed uniquely
     },
     trackName: {
         type: String, 
