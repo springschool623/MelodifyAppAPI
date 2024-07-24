@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 const trackSchema = new mongoose.Schema({
+    trackID: {
+        type: String,
+        required: true
+    },
     userEmail: {
         type: String, 
         required: true,
         unique: false,
-    },
-    trackID: {
-        type: String,
-        required: true
     },
     trackName: {
         type: String, 
