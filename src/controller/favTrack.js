@@ -14,7 +14,7 @@ export const getTracksByUserEmail = async (req, res) => {
 
 // Add a new track
 export const addTrack = async (req, res) => {
-    const { userEmail, trackID, trackName, artists } = req.body;
+    const { userEmail, trackID, trackName, artists, trackImage } = req.body;
 
     const newTrack = new Track({
         userEmail,
