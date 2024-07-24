@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const trackSchema = new mongoose.Schema({
     trackID: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     userEmail: {
         type: String,
