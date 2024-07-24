@@ -1,5 +1,5 @@
 import express from "express";
-import { getTracksByUserEmail, addTrack } from "../controller/favTrack.js"; // Thêm đuôi .js
+import { getTracksByUserEmail, addTrack, deleteAllTracks, getAllTracks } from "../controller/favTrack.js"; // Thêm đuôi .js
 
 const router = express.Router();
 
