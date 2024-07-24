@@ -25,9 +25,15 @@ export const getUserById = async (req, res) => {
     }
 };
 
-// Khi thêm người dùng mới, hãy đảm bảo rằng bạn đã băm mật khẩu đúng cách
+// Khi thêm người dùng mới, hãy đảm bảo rằng bạn đã băm mật khẩu đúng cách và kiểm tra email trùng lặp
 export const addUser = async (req, res) => {
     try {
+        // Kiểm tra xem email đã tồn tại hay chưa
+        const existingUser = await User.findOne({ email: req.body.email });
+        if (existingUser) {
+            return res.status(400).json({ message: 'Email already exists' });
+        }
+
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
@@ -42,7 +48,6 @@ export const addUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
 
 // Xóa người dùng
 export const deleteUser = async (req, res) => {
